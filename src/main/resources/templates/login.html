@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}">
+
+    <!--    href="/static/css/login.css" THIS IS GENERAL WAY OF DOING-->
+    <!--    th:href="@{../css/login.css} THIS IS HOW YOU SHOULD DEFINE IN THYMLEAF-->
+</head>
+<body>
+<div class="login-container">
+    <div class="message" th:if="${param.error}">
+        Incorrect email and password
+    </div>
+    <div class="message" th:if="${param.logout}">
+        Logout successfully
+    </div>
+    <h1>Login</h1>
+    <form method="post" th:action="@{/login}">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <button type="button" class="github-button">
+            <a th:href="@{/oauth2/authorization/github}">Login with GitHub</a>
+        </button>
+    </form>
+</div>
+</body>
+</html>
